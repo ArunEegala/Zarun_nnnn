@@ -1,0 +1,6 @@
+@EndUserText.label: 'Service definition'
+define service ZARUN_TRAVEL_SD {
+  expose ZARUN_TRAVEL_C;
+  expose ZARUN_BOOKING_C;
+  expose ZARUN_BOOKINGSuppl_C;
+}

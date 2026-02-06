@@ -1,0 +1,5 @@
+@EndUserText.label: 'Flight Service'
+define service Zflight_ak {
+  expose zak_i_connection;
+  expose ZI_FLIGHT_INFORM;
+}

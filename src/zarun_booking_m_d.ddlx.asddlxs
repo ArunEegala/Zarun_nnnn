@@ -1,0 +1,69 @@
+@Metadata.layer: #CORE
+annotate entity ZARUN_BOOKING_C
+    with 
+{
+
+   @UI.facet: [{  id : 'Booking',
+                  purpose: #STANDARD,
+                  type :#IDENTIFICATION_REFERENCE,
+                  label: 'Booking',
+                  position : 10   
+   
+    },
+    
+    {  
+         id : 'BookingSupplement',
+                  purpose: #STANDARD,
+                  type :#LINEITEM_REFERENCE,
+                  label: 'BookingSupplement',
+                  targetElement : '_BookingSupplement',
+                  position : 20    
+       
+    }
+    
+    ]
+
+
+    @UI.hidden:true
+    BookingUuid;
+    
+    @UI.hidden:true
+    TravelUuid;
+    
+    @UI.lineItem: [ { position: 10 , importance:#HIGH } ]
+    @UI.identification: [{ position: 10 , importance:#HIGH }]
+    BookingId;
+    
+    @UI.lineItem: [ { position: 10 , importance:#HIGH } ]
+    @UI.identification: [{ position: 10 , importance:#HIGH }]
+    BookingDate;
+    
+    @UI.lineItem: [ { position: 10 , importance:#HIGH } ]
+    @UI.identification: [{ position: 10 , importance:#HIGH }]
+    CustomerId;
+    
+    @UI.lineItem: [ { position: 10 , importance:#HIGH } ]
+    @UI.identification: [{ position: 10 , importance:#HIGH }]
+    CarrierId;
+    
+    @UI.lineItem: [ { position: 10 , importance:#HIGH } ]
+    @UI.identification: [{ position: 10 , importance:#HIGH }]
+    ConnectionId;
+    
+    @UI.lineItem: [ { position: 10 , importance:#HIGH } ]
+    @UI.identification: [{ position: 10 , importance:#HIGH }]
+    FilghtDate;
+    
+    @UI.lineItem: [ { position: 10 , importance:#HIGH } ]
+    @UI.identification: [{ position: 10 , importance:#HIGH }]
+    FlightPrice;
+    
+    @UI.lineItem: [ { position: 10 , importance:#HIGH } ]
+    @UI.identification: [{ position: 10 , importance:#HIGH }]
+ //   CurrencyCode;
+    BookingStatus;
+//    LocalLastChangedAt;
+//    /* Associations */
+//    _BookingSupplement;
+//    _Travel;   
+}

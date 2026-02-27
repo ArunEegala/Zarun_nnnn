@@ -1,6 +1,7 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Consumprtion for BookingSupp'
 @Metadata.ignorePropagatedAnnotations: true
+@Metadata.allowExtensions: true
 @VDM.viewType: #CONSUMPTION
 define view entity ZARUN_BOOKINGSuppl_C
   as projection on ZARUN_BOOKINGSuppl_I

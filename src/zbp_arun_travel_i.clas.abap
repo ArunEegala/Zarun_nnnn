@@ -1,5 +1,9 @@
 CLASS zbp_arun_travel_i DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zarun_travel_i.
+protected section.
+private section.
 ENDCLASS.
 
-CLASS zbp_arun_travel_i IMPLEMENTATION.
+
+
+CLASS ZBP_ARUN_TRAVEL_I IMPLEMENTATION.
 ENDCLASS.

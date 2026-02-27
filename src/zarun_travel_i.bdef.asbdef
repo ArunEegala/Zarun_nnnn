@@ -1,17 +1,32 @@
 managed implementation in class zbp_arun_travel_i unique;
 strict ( 2 );
 
+with draft;
+
 define behavior for ZARUN_TRAVEL_I alias Travel
 persistent table zarun_travel
+draft table zarun_d_travel
 lock master
-authorization master ( global, instance )
+total etag LastChangedAt
+authorization master ( global,instance )
 etag master LocalLastChangedAt   //System detect latest timestamp and prevent overwrite
 {
   create ( authorization : global );
   update;
   delete;
   field ( numbering : managed, readonly ) TravelUuId;
-  association _Booking { create; }
+  field (readonly) TravelId,Overallstatus;
+  association _Booking { create; with draft; }
+
+  draft action Edit;
+  draft action Discard;
+  draft action Resume;
+  draft action Activate optimized;
+  draft determine action Prepare;
+
+
+  determination setTraveld on save { create; }
+  determination setOverallstatus on modify { create; update;}
 
   mapping for zarun_travel
     {
@@ -37,6 +52,7 @@ etag master LocalLastChangedAt   //System detect latest timestamp and prevent ov
 
 define behavior for ZARUN_BOOKING_I alias Booking
 persistent table zarun_booking
+draft table zarun_d_booking
 lock dependent by _Travel
 authorization dependent by _Travel
 etag master LocallastchangedAt
@@ -45,8 +61,8 @@ etag master LocallastchangedAt
   delete;
   field ( readonly ) TravelUuid;
   field ( numbering : managed, readonly ) BookingUuid;
-  association _Travel { }
-  association _BookingSupplement { create; }
+  association _Travel { with draft; }
+  association _BookingSupplement { create; with draft; }
 
   mapping for zarun_booking
     {
@@ -67,6 +83,7 @@ etag master LocallastchangedAt
 
 define behavior for ZARUN_BOOKINGSuppl_I alias BookingSuppl
 persistent table zarun_bksupplem
+draft table zarun_d_bksupp
 lock dependent by _Travel
 authorization dependent by _Travel
 etag master LocalLastChangedAt
@@ -76,8 +93,8 @@ etag master LocalLastChangedAt
   delete;
   field ( numbering : managed, readonly ) BooksupplUuid;
   field ( readonly ) BookingUuid, TravelUuid;
-  association _Travel;
-  association _Booking;
+  association _Travel { with draft;}
+  association _Booking { with draft;}
 
   mapping for zarun_bksupplem
     {
